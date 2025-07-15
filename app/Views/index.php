@@ -50,13 +50,28 @@
             <div class="row mt-4">
                 <div class="col-md-3 d-flex">
                     <div class="btnLink">
-                        <a href="<?= get_href('lilurl'); ?>" class="">LI'L URL</a>
+                        <a href="<?= get_href('lilurl'); ?>" >LI'L URL</a>
                     </div>
                 </div>
 
                 <div class="col-md-9">
                     <div class="descTask">
-                        <span class="h3">Опытные наставники</span>
+                        <span class="h3">Сократитель ссылок</span>
+                        <p class="mt-2">Практикующие специалисты, которые скорректируют траекторию обучения и помогут
+                            справиться с трудностями. Вы не останетесь одни и вам не будет стыдно за результат</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-3 d-flex">
+                    <div class="btnLink">
+                        <a href="<?= get_href('comments'); ?>" >Comments</a>
+                    </div>
+                </div>
+
+                <div class="col-md-9">
+                    <div class="descTask">
+                        <span class="h3">Добавление комментариев</span>
                         <p class="mt-2">Практикующие специалисты, которые скорректируют траекторию обучения и помогут
                             справиться с трудностями. Вы не останетесь одни и вам не будет стыдно за результат</p>
                     </div>
