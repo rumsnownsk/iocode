@@ -1,5 +1,3 @@
-<?php dump($_SERVER)  ?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -37,7 +35,7 @@
             <div class="row mt-4">
                 <div class="col-md-3 d-flex">
                     <div class="btnLink">
-                        <a href="http://crudajax.loc" class="">CRUD AJAX</a>
+                        <a href="<?= get_href('crudajax'); ?>" class="">CRUD AJAX</a>
                     </div>
                 </div>
                 <div class="col-md-9">
@@ -52,7 +50,7 @@
             <div class="row mt-4">
                 <div class="col-md-3 d-flex">
                     <div class="btnLink">
-                        <a href="http://lilurl.loc" class="">LI'L URL</a>
+                        <a href="<?= get_href('lilurl'); ?>" class="">LI'L URL</a>
                     </div>
                 </div>
 
