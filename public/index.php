@@ -14,7 +14,3 @@ require_once APP."/Views/index.php";
 
 
 
-//$app = new \AppPHP\Application();
-//require_once CONFIG.'/routes.php';
-//
-//$app->run();

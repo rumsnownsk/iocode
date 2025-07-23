@@ -40,9 +40,8 @@
                 </div>
                 <div class="col-md-9">
                     <div class="descTask">
-                        <span class="h3">Опытные наставники</span>
-                        <p class="mt-2">Практикующие специалисты, которые скорректируют траекторию обучения и помогут
-                            справиться с трудностями. Вы не останетесь одни и вам не будет стыдно за результат</p>
+                        <span class="h3">Create Read Update Delete</span>
+                        <p class="mt-2">Реализован CRUD-функционал для записей в базу данных посредством AJAX без перезагрузки страницы. Всплывающие поп-ап окна. Проверки на стороне сервера. AJAX-поиск. ООП структура + composer</p>
                     </div>
                 </div>
             </div>
@@ -57,8 +56,7 @@
                 <div class="col-md-9">
                     <div class="descTask">
                         <span class="h3">Сократитель ссылок</span>
-                        <p class="mt-2">Практикующие специалисты, которые скорректируют траекторию обучения и помогут
-                            справиться с трудностями. Вы не останетесь одни и вам не будет стыдно за результат</p>
+                        <p class="mt-2">Сервис по укорачиванию ссылок введённых пользователем. Немного AJAX, нативный JS. ООП + Composer</p>
                     </div>
                 </div>
             </div>
@@ -72,8 +70,7 @@
                 <div class="col-md-9">
                     <div class="descTask">
                         <span class="h3">Добавление комментариев</span>
-                        <p class="mt-2">Практикующие специалисты, которые скорректируют траекторию обучения и помогут
-                            справиться с трудностями. Вы не останетесь одни и вам не будет стыдно за результат</p>
+                        <p class="mt-2">Выполнение задачи по созданию функционала по принципу "Оставить комментарий". Выполняется проверка на отправку пустого сообщения, а также защита Captcha-кодом </p>
                     </div>
                 </div>
             </div>
@@ -101,8 +98,8 @@
 <script type="text/javascript" src="<?= base_url('/assets/js/jquery-3.7.1.min.js') ?>"></script>
 <script type="text/javascript" src="<?= base_url('/assets/js/bootstrap.min.js') ?>"></script>
 
-<script type="text/javascript" src="<?= base_url('/assets/js/iziModal.min.js') ?>"></script>
-<script type="text/javascript" src="<?= base_url('/assets/js/mark.min.js') ?>"></script>
-<script type="text/javascript" src="<?= base_url('/assets/js/main.js') ?>"></script>
+<!--<script type="text/javascript" src="--><?php //= base_url('/assets/js/iziModal.min.js') ?><!--"></script>-->
+<!--<script type="text/javascript" src="--><?php //= base_url('/assets/js/mark.min.js') ?><!--"></script>-->
+<!--<script type="text/javascript" src="--><?php //= base_url('/assets/js/main.js') ?><!--"></script>-->
 </body>
 </html>
