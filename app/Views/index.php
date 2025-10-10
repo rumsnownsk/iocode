@@ -26,7 +26,7 @@
                 <i class="fa fa-sticky-note" aria-hidden="true"></i>
             </div>
             <div class="signArea" data-bs-toggle="modal" data-bs-target="#modalLogin">
-                <button class="btn btn-dark btnLogin"><i class="fa fa-sign-in" aria-hidden="true"></i>LogIn</button>
+                <button class="btn btn-dark btnSignIn"><i class="fa fa-sign-in" aria-hidden="true"></i>SignIn</button>
             </div>
         </div>
     </div>
@@ -125,7 +125,7 @@
                         <!--                        <input type="hidden" name="addCity">-->
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" id="btn-login">LogIn</button>
+                        <button type="submit" class="btn btn-primary" id="btn-login">SignIn</button>
                     </div>
                 </form>
             </div>
