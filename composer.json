@@ -2,7 +2,8 @@
     "name": "rum/iocode",
     "autoload": {
         "psr-4": {
-            "Rum\\Iocode\\": "core/"
+            "CoreApp\\": "core/",
+            "App\\Controllers\\": "app/Controllers"
         }
     },
     "authors": [

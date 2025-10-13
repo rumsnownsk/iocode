@@ -1,5 +1,45 @@
 <?php
 
+function app(): \CoreApp\Application
+{
+    return \CoreApp\Application::$app;
+}
+function request(): \CoreApp\Request
+{
+    return app()->request;
+}
+
+function response(): \CoreApp\Response
+{
+    return app()->response;
+}
+
+function view($view = '', $data = [], $layout=''): string|\CoreApp\View
+{
+    if($view){
+        return app()->view->render($view,$data, $layout);
+    }
+    return app()->view;
+}
+
+function abort($error = '', $code = 404)
+{
+//    dd($error, $code);
+    response()->setResponseCode($code);
+    echo view("errors/{$code}", ['error' => $error], false);
+    die;
+}
+
+//function get_alerts(): void
+//{
+//    if (!empty($_SESSION['flash'])){
+//        foreach ($_SESSION['flash'] as $k => $v) {
+//            echo view()->renderPartial(
+//                "incs/alert_{$k}",
+//                ["flash_{$k}" => session()->getFlash($k)]);
+//        }
+//    }
+//}
 
 function base_url($path=''): string
 {

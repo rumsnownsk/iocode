@@ -1,5 +1,12 @@
 <?php
 
+if (PHP_MAJOR_VERSION < 8){
+    die("Require PHP version >= 8");
+}
+ini_set('display_errors', 1);
+error_reporting(-1);
+
+
 define("ROOT", dirname(__DIR__));
 define("HOST", $_SERVER['HTTP_HOST']);
 
@@ -31,11 +38,4 @@ const DB_SETTINGS = [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
     ]
-];
-
-const PAGINATION_SETTINGS = [
-    'perPage' => 3,
-    'midSize' => 2,
-    'maxPages' => 7,
-    'tpl' => 'pagination/base'
 ];
