@@ -5,7 +5,7 @@
 use App\Controllers\MainController;
 use \CoreApp\Application;
 
-//use App\Controllers\UserController;
+use App\Controllers\UserController;
 //use App\Controllers\AjaxController;
 //use App\Controllers\Api\V1\CategoryController;
 //
@@ -15,7 +15,7 @@ use \CoreApp\Application;
 //];
 //
 $app->router->get('/', [\App\Controllers\MainController::class, 'index']);
-//$app->router->get('/admin/resetId', [\App\Controllers\AdminController::class, 'resetId']);
+$app->router->post('/auth', [UserController::class, 'auth']);
 //$app->router->get("/admin/build/create", [\App\Controllers\AdminController::class, 'create']);
 //$app->router->post("/admin/build/create", [\App\Controllers\AdminController::class, 'create']);
 //$app->router->get("/admin/build/(?P<id>[0-9]+)", [\App\Controllers\AdminController::class, 'build']);
@@ -51,7 +51,7 @@ $app->router->get('/', [\App\Controllers\MainController::class, 'index']);
 //$app->router->post('/register', [UserController::class, 'store'])->middleware(['guest']);
 //$app->router->get('/login', [UserController::class, 'login'])->middleware(['guest']);
 //$app->router->post('/login', [UserController::class, 'auth'])->middleware(['guest']);
-//$app->router->get('/logout', [UserController::class, 'logout']);
+$app->router->get('/signout', [UserController::class, 'signout']);
 //
 //$app->router->get('/users', [UserController::class, 'index']);
 //

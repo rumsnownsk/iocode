@@ -22,6 +22,21 @@ function view($view = '', $data = [], $layout=''): string|\CoreApp\View
     return app()->view;
 }
 
+function session(): \CoreApp\Session
+{
+    return app()->session;
+}
+
+function db(): \CoreApp\Database
+{
+    return app()->db;
+}
+
+function auth(): \CoreApp\Auth
+{
+    return app()->auth;
+}
+
 function abort($error = '', $code = 404)
 {
 //    dd($error, $code);
@@ -58,4 +73,14 @@ function get_href($address = ''): string
     } elseif ($location == 'loc') {
         return "http://{$address}.iocode.{$location}";
     } else return '#';
+}
+
+function get_csrf_token(): string
+{
+    return '<input type="hidden" name="csrf_token" value="'. session()->get('csrf_token') .'">';
+}
+
+function get_csrf_meta(): string
+{
+    return '<meta name="csrf-token" content="'. session()->get('csrf_token') .'">';
 }

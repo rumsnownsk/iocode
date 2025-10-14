@@ -1,13 +1,19 @@
 <?php
 namespace App\Controllers;
 
-use Rum\Iocode\View;
+use CoreApp\View;
 
 class MainController
 {
     public function index(): string|View
     {
-        return view(view: 'main');
+        dump($_SESSION);
+
+        return view('main', [
+            'statistic_table' => view()->renderPartial('incs/statistic_table', [
+                'visitors' => db()->query('SELECT * FROM visitors')->get()
+            ]),
+        ]);
     }
 
 

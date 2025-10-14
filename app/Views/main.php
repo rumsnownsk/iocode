@@ -58,3 +58,5 @@
     </div>
 
 </div>
+<?= /** @var string $statistic_table */
+$statistic_table ?>

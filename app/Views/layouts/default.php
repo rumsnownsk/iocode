@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <?= get_csrf_meta(); ?>
 
     <link rel="icon" href="<?= base_url('/assets/images/favicon.ico') ?>">
 
@@ -25,9 +26,19 @@
             <div class="header__logo">
                 <i class="fa fa-sticky-note" aria-hidden="true"></i>
             </div>
-            <div class="signArea" data-bs-toggle="modal" data-bs-target="#modalLogin">
-                <button class="btn btn-dark btnSignIn"><i class="fa fa-sign-in" aria-hidden="true"></i>SignIn</button>
+
+            <div class="signArea">
+                <?php if (auth()::isAuth()) : ?>
+                <a href="/signout" class="btn btn-dark"><i class="fa fa-sign-out" aria-hidden="true"></i>SignOut</a>
+                <?php else: ?>
+                <div data-bs-toggle="modal" data-bs-target="#modalLogin">
+                    <button class="btn btn-dark btnSignIn"><i class="fa fa-sign-in" aria-hidden="true"></i>SignIn</button>
+                </div>
+                <?php endif; ?>
             </div>
+
+
+
         </div>
     </div>
 
@@ -42,6 +53,10 @@
     $content; ?>
 </section>
 
+<section class="statistic">
+
+</section>
+
 <!---footer---->
 <footer id="footer" class="footer">
     <div class="container">
@@ -54,16 +69,16 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
-                <form id="loginForm">
+                <form action="/auth" method="post" id="loginForm">
+                    <?= get_csrf_token()  ?>
                     <div class="mb-3">
-                        <label for="fieldLogin" class="form-label">login</label>
-                        <input type="text" name="fieldLogin" class="form-control" id="fieldLogin" placeholder="login">
+                        <label for="login" class="form-label">login</label>
+                        <input type="text" name="login" class="form-control" id="login" placeholder="login">
                     </div>
                     <div class="mb-3">
-                        <label for="fieldPassword" class="form-label">Password</label>
-                        <input type="text" name="fieldPassword" class="form-control" id="fieldPassword"
+                        <label for="password" class="form-label">Password</label>
+                        <input type="text" name="password" class="form-control" id="password"
                                placeholder="password">
-                        <!--                        <input type="hidden" name="addCity">-->
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary" id="btn-login">SignIn</button>
