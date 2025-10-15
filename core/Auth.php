@@ -43,6 +43,7 @@ class Auth
 
     public static function getRole(): int
     {
+        dump(self::user()['role']);
         return self::user()['role'];
     }
 

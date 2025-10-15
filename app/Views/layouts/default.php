@@ -16,6 +16,12 @@
 
     <link type='text/css' rel="stylesheet" href="<?= base_url('/assets/css/main.css') ?>">
 
+    <?php if(!empty($styles)) : ?>
+        <?php foreach ($styles as $style) : ?>
+            <link rel="stylesheet" href="<?= $style; ?>">
+        <?php endforeach; ?>
+    <?php endif; ?>
+
     <title>Document</title>
 </head>
 <body>
@@ -49,11 +55,16 @@
 
 <!---content---->
 <section id="content" class="content">
-    <?= /** @var string $content */
-    $content; ?>
-</section>
+    <div class="container">
+        <?= /** @var string $content */
+        $content; ?>
 
-<section class="statistic">
+
+        <div class="statistic">
+            <?= app()->visitors ?>
+        </div>
+
+    </div>
 
 </section>
 

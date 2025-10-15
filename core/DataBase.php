@@ -33,7 +33,8 @@ class DataBase
     {
         $this->stmt = $this->connection->prepare($query);
 //        dump($this->stmt);
-//        dd($params);
+//        dump($params);
+//        dd($query);
         $this->stmt->execute($params);
         return $this;
     }

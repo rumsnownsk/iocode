@@ -138,6 +138,15 @@ a {
     /*border-style: solid;*/
 }
 
+.statistic th{
+    white-space: nowrap;
+    text-align: center;
+}
+
+.statistic tr{
+    text-align: center;
+}
+
 /*#modalLogin{*/
 /*    display: flex;*/
 /*    align-items: center;*/

@@ -13,6 +13,7 @@ class Application
     public View $view;
     public DataBase $db;
     public Auth $auth;
+    public Visitors $visitors;
 
     public static Application $app;
 
@@ -33,7 +34,7 @@ class Application
         $this->generatedCsrfToken();
         $this->auth = new Auth();
 
-        new Visitors();
+        $this->visitors = new Visitors();
     }
 
     public function run(): void // void - ничего не возвращаем
