@@ -5,69 +5,68 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <?= get_csrf_meta(); ?>
+
     <link rel="icon" href="<?= base_url('/assets/images/favicon.ico') ?>">
 
-    <link type='text/css' rel="stylesheet" href="<?= base_url('/assets/css/font-awesome.min.css') ?>">
+    <link type='text/css' rel="stylesheet" href="<?= base_url('/assets/font-awesome-4.7.0/css/font-awesome.css') ?>">
     <link type='text/css' rel="stylesheet" href="<?= base_url('/assets/css/bootstrap.min.css') ?>">
 
     <link type='text/css' rel="stylesheet" href="<?= base_url('/assets/css/iziModal.min.css') ?>">
 
     <link type='text/css' rel="stylesheet" href="<?= base_url('/assets/css/main.css') ?>">
 
-    <!----webfonts---->
+    <?php if(!empty($styles)) : ?>
+        <?php foreach ($styles as $style) : ?>
+            <link rel="stylesheet" href="<?= $style; ?>">
+        <?php endforeach; ?>
+    <?php endif; ?>
 
-
+    <title>Document</title>
 </head>
 <body>
 <!---header---->
 <header id="header" class="header">
     <div class="container">
+        <div class="header__top">
+            <div class="header__logo">
+                <i class="fa fa-sticky-note" aria-hidden="true"></i>
+            </div>
 
+            <div class="signArea">
+                <?php if (auth()::isAuth()) : ?>
+                <a href="/signout" class="btn btn-dark"><i class="fa fa-sign-out" aria-hidden="true"></i>SignOut</a>
+                <?php else: ?>
+                <div data-bs-toggle="modal" data-bs-target="#modalLogin">
+                    <button class="btn btn-dark btnSignIn"><i class="fa fa-sign-in" aria-hidden="true"></i>SignIn</button>
+                </div>
+                <?php endif; ?>
+            </div>
+
+
+
+        </div>
     </div>
+
+
+
 </header>
 <!---//end_header---->
 
-<?php get_alerts(); ?>
-
 <!---content---->
 <section id="content" class="content">
-
     <div class="container">
-        <div class="row mt-5">
-                <h1 class="text-center h2 my-3">Brevity is the sister of talent</h1>
-        </div>
-        <div class="row mt-2">
-            <form action="" method="post" id="getUrlForm">
-                <div class="input-group">
-                    <input type="url" name="longLink" class="form-control" id="longLink" placeholder="Your long e-link">
-                    <span class="input-group-text" id="clear-longLink">×</span>
-                </div>
-                <button type="submit" id="btn-get-url" class="btn btn-primary mt-2 rounded-1 btn-get">Get li'l URL</button>
-            </form>
+        <?= /** @var string $content */
+        $content; ?>
 
-        </div>
 
-        <div class="row" style="height: 150px">
-            <div class="result" id="result">
-                <div class="lilUrl" id="lilUrl"></div>
-                <p class="instruction">click to copy</p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div id="history"></div>
-
-        </div>
-        <div id="loader">
-            <img src="/assets/images/ripple.svg" alt="">
+        <div class="statistic">
+            <?= app()->visitors ?>
         </div>
 
     </div>
 
 </section>
-<!---//end_content---->
-
-
 
 <!---footer---->
 <footer id="footer" class="footer">
@@ -76,15 +75,36 @@
 </footer>
 <!---//end_footer---->
 
+<!-- Modal Login-->
+<div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form action="/auth" method="post" id="loginForm">
+                    <?= get_csrf_token()  ?>
+                    <div class="mb-3">
+                        <label for="login" class="form-label">login</label>
+                        <input type="text" name="login" class="form-control" id="login" placeholder="login">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="text" name="password" class="form-control" id="password"
+                               placeholder="password">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" id="btn-login">SignIn</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
-<script type="text/javascript" src="<?= base_url('/assets/js/jquery-3.7.1.min.js')?>"></script>
-<script type="text/javascript" src="<?= base_url('/assets/js/bootstrap.min.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('/assets/js/jquery-3.7.1.min.js') ?>"></script>
+<script type="text/javascript" src="<?= base_url('/assets/js/bootstrap.min.js') ?>"></script>
 
-<script type="text/javascript" src="<?= base_url('/assets/js/iziModal.min.js')?>"></script>
-<script type="text/javascript" src="<?= base_url('/assets/js/mark.min.js')?>"></script>
-<script type="text/javascript" src="<?= base_url('/assets/js/main.js')?>"></script>
-
-<div class="iziModal-alert-success"></div>
-<div class="iziModal-alert-error"></div>
+<!--<script type="text/javascript" src="--><?php //= base_url('/assets/js/iziModal.min.js') ?><!--"></script>-->
+<!--<script type="text/javascript" src="--><?php //= base_url('/assets/js/mark.min.js') ?><!--"></script>-->
+<!--<script type="text/javascript" src="--><?php //= base_url('/assets/js/main.js') ?><!--"></script>-->
 </body>
 </html>

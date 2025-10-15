@@ -1,61 +1,32 @@
 <?php
 namespace App\Controllers;
 
-use App\Models\Link;
+use CoreApp\Auth;
+use CoreApp\View;
 
 class MainController
 {
-    public function index()
+    public function index(): string|View
     {
+        $styles = '';
+//        $statistic_table = '';
+//        $visitors = db()->query('SELECT * FROM visitors order by last_visit desc limit 10')->get();
+//
+//        for ($i = 0; $i < count($visitors); $i++) {
+//            $visitors[$i]['last_visit'] = date('d-m-Y H:i', $visitors[$i]['last_visit']);
+//        }
+
+        if(Auth::isAuth() && Auth::getRole()>1){
+            $styles = [ base_url('assets/css/statistic_table.css') ];
+//            $statistic_table = view()->renderPartial('incs/statistic_table', [
+//                'visitors' => $visitors
+//            ]);
+        };
+        dump($_SESSION);
+
         return view('main');
-    }
 
-    public function getLilUrl()
-    {
-        $link = new Link();
-        $link->loadData();
-        if ($link->validate()){
-            $link->storeLink();
-            echo json_encode([
-                'answer'=>'success',
-                'lilUrl'=>$link->shortLink,
-                'history'=> view()->renderPartial("incs/history", [
-                    'history'=>db()->query('SELECT * FROM urls ORDER BY id DESC limit 10')->get(),
-                ])
-            ]);
-        } else {
-            echo json_encode([
-                'answer'=>'error',
-                'lilUrl'=>'something went wrong'
-            ]);
-        }
-        die;
-    }
 
-    public function getOriginUrl():void
-    {
-        $shorty = get_route_param('shortLink');
-        $res = db()->findOne('urls', $shorty, 'shorty');
-
-        if ($res){
-            try {
-                response()->redirect($res['originlink']);
-            } catch (\Exception $e) {
-                die($e->getMessage());
-            }
-        }
-    }
-
-    public function getHistory()
-    {
-        $data = db()->query('SELECT * FROM urls ORDER BY id DESC limit 10')->get();
-
-        echo json_encode([
-            'answer'=>'success',
-            'history'=> view()->renderPartial("incs/history", [
-                'history'=>$data,
-            ])
-        ]);
     }
 
 

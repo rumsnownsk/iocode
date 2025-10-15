@@ -12,7 +12,7 @@ body {
     font-family: "PT Sans", serif;
     color: #000;
     font-size: 16px;
-    background-color: rgb(26, 37, 68);
+    /*background-color: rgb(26, 37, 68);*/
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -29,10 +29,6 @@ h2 {
 
 p, a {
     margin: 0 auto;
-}
-
-p {
-    /*text-indent: 16px;*/
 }
 
 ul, li {
@@ -53,6 +49,10 @@ a {
 .header__logo i{
     color: #fff3cd;
     font-size: 50px;
+}
+
+.signArea{
+    display: flex;
 }
 
 .signArea i{
@@ -137,6 +137,20 @@ a {
     /*border-color: transparent;*/
     /*border-style: solid;*/
 }
+
+.statistic th{
+    white-space: nowrap;
+    text-align: center;
+}
+
+.statistic tr{
+    text-align: center;
+}
+
+/*#modalLogin{*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*}*/
 
 @media (max-width: 800px) {
     .container{
