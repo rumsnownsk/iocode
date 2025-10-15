@@ -25,14 +25,8 @@ const PATH = '';
 const IMAGES = WWW.'/images';
 
 const DB_SETTINGS = [
-    'driver' => 'mysql',
-    'host' => 'ruvip43.hostiman.ru',
-    'database' => 'db_sandbox',
-    'username' => 'admin',
-    'password' => 'C9qCM8ZxQDIk41GF',
     'charset' => 'utf8mb4',
     'collation' => 'utf8mb4_unicode_ci',
-    'port' => 3306,
     'prefix' => '',
     'options' => [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,

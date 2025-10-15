@@ -12,20 +12,19 @@ class DataBase
 
     public function __construct()
     {
-        $dsn = "mysql:host=". DB_SETTINGS['host'] .";dbname=". DB_SETTINGS['database']
+        $dsn = "mysql:host=". env('DB_HOST') .";dbname=". env('DB_DATABASE')
             . ";charset=". DB_SETTINGS['charset'];
 
         try {
             $this->connection = new \PDO(
-                $dsn,
-                DB_SETTINGS['username'],
-                DB_SETTINGS['password'],
+                $dsn, env('DB_USERNAME'), env('DB_PASSWORD'),
                 DB_SETTINGS['options']
             );
         } catch ( \PDOException $e){
             error_log("[" . date('Y-m-d H:i:s') . "] DB Error: {$e->getMessage()}" . PHP_EOL, 3, ERROR_LOGS);
             abort('DB error connection', 500);
         }
+
         return $this;
     }
 

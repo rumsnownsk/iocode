@@ -2,6 +2,8 @@
 
 namespace CoreApp;
 
+use Dotenv\Dotenv;
+
 class Application
 {
     protected string $uri;

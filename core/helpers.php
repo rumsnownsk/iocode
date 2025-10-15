@@ -84,3 +84,10 @@ function get_csrf_meta(): string
 {
     return '<meta name="csrf-token" content="'. session()->get('csrf_token') .'">';
 }
+
+function env($key)
+{
+    $dotenv = Dotenv\Dotenv::createImmutable(ROOT);
+    $dotenv->load();
+    return $_ENV[$key];
+}
