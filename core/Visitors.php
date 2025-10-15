@@ -9,7 +9,7 @@ class Visitors
     public string $user_agent;
     public string $referrer;
     public string $on_page;
-    public array $visitor;
+    public array $visitor = [];
     public int $timeOneDay = 86400;     // 60 * 60 * 24
     public int $time;
 
@@ -21,17 +21,26 @@ class Visitors
         $this->referrer = $_SERVER['HTTP_REFERER'] ?? 'none';
         $this->on_page = request()->uri ?? '';
         $this->time = time() + 25200;   // +7 часов
-        $this->visitor = db()
-            ->query("select * from visitors where ip_client = ? order by last_visit desc limit 1", [$this->ip_client])
-            ->getOne();
 
         $this->run();
     }
 
     protected function run(): void
     {
-        if ($this->visitor == null || $this->isNewDay()) {
+        $visitor = db()
+            ->query("select * from visitors where ip_client = ? order by last_visit desc limit 1", [$this->ip_client])
+            ->getOne();
+
+        if (!$visitor) {
             $this->saveVisitor();
+            return;
+        }
+
+        $this->visitor = $visitor;
+
+        if ($this->isNewDay()) {
+            $this->saveVisitor();
+            return;
         }
 
         if ($this->time - $this->visitor['last_visit'] > 10 && $this->time - $this->visitor['last_visit'] < $this->timeOneDay) {
