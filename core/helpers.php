@@ -39,7 +39,7 @@ function auth(): \CoreApp\Auth
 
 function abort($error = '', $code = 404)
 {
-//    dd($error, $code);
+    dd($error, $code);
     response()->setResponseCode($code);
     echo view("errors/{$code}", ['error' => $error], false);
     die;
@@ -87,7 +87,5 @@ function get_csrf_meta(): string
 
 function env($key)
 {
-    $dotenv = Dotenv\Dotenv::createImmutable(ROOT);
-    $dotenv->load();
     return $_ENV[$key];
 }

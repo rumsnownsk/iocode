@@ -23,6 +23,8 @@ class Application
     {
         self::$app = $this;
 
+        Dotenv::createImmutable(ROOT)->load();
+
         $this->uri = $_SERVER['REQUEST_URI'];
 
         $this->session = new Session();
