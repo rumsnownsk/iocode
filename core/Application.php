@@ -2,6 +2,8 @@
 
 namespace CoreApp;
 
+use Dotenv\Dotenv;
+
 class Application
 {
     protected string $uri;
@@ -20,6 +22,8 @@ class Application
     public function __construct()
     {
         self::$app = $this;
+
+        Dotenv::createImmutable(ROOT)->load();
 
         $this->uri = $_SERVER['REQUEST_URI'];
 

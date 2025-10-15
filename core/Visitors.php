@@ -9,10 +9,9 @@ class Visitors
     public string $user_agent;
     public string $referrer;
     public string $on_page;
-    protected int $time;
     public array $visitor;
-
     public int $timeOneDay = 86400;     // 60 * 60 * 24
+    public int $time;
 
     public function __construct()
     {
@@ -25,7 +24,6 @@ class Visitors
         $this->visitor = db()
             ->query("select * from visitors where ip_client = ? order by last_visit desc limit 1", [$this->ip_client])
             ->getOne();
-        dump($this->visitor);
 
         $this->run();
     }
@@ -77,6 +75,8 @@ class Visitors
 
     public function __toString(): string
     {
+        if (!Auth::isAuth()) return '';
+
         $visitors = db()->query('SELECT * FROM visitors order by last_visit desc limit 10')->get();
 
         for ($i = 0; $i < count($visitors); $i++) {

@@ -6,7 +6,6 @@ if (PHP_MAJOR_VERSION < 8){
 ini_set('display_errors', 1);
 error_reporting(-1);
 
-
 define("ROOT", dirname(__DIR__));
 define("HOST", $_SERVER['HTTP_HOST']);
 
@@ -25,14 +24,8 @@ const PATH = '';
 const IMAGES = WWW.'/images';
 
 const DB_SETTINGS = [
-    'driver' => 'mysql',
-    'host' => 'ruvip43.hostiman.ru',
-    'database' => 'db_sandbox',
-    'username' => 'admin',
-    'password' => 'C9qCM8ZxQDIk41GF',
     'charset' => 'utf8mb4',
     'collation' => 'utf8mb4_unicode_ci',
-    'port' => 3306,
     'prefix' => '',
     'options' => [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
